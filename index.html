@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CoinMarketCap</title>
+    <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"> 
+    <meta charset="UTF-8">  
+    <link rel="stylesheet" href="main.css"> 
+</head>
+<body>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Coin Market Cap</li>
+        </ol>
+    </nav>
+
+
+    <div class="d-flex p-3 bd-highlight">
+        <div id='coins'></div>
+      </div>
+
+
+    <script type="text/javascript">
+    
+
+    //My api Key
+        var apikey = {
+        Key: 'a9fef4a9-ff65-4dd8-9430-c0bd0bcc9af2'
+    } 
+    // GET Fetch Requisition 
+    fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/map?CMC_PRO_API_KEY=' + 
+            apikey.Key)
+            .then((response) => {
+                if(!response.ok) throw new Error('Erro ao executar a requisição, status' + response.status);
+                return response.json();
+        })
+            .then((api) => {
+
+
+                var texto = "";
+                //Get 10 coins and symbols
+
+                for(let i = 0; i < 10; i++){
+                console.log(api);
+
+
+                //Show API information
+
+                texto = texto + `
+                  
+                    <div class="media">
+                        <img src="coin.jpg" class="align-self-center mr-3" alt="coin" width="100" height="60">
+                        <div class="media-body">
+                        <h5 class="mt-2">${api.data[i].name}</h5>
+                        <p>${api.data[i].symbol}</p>
+                        </div>
+                    </div>
+               
+                    `;
+                
+                    
+               
+                document.getElementById("coins").innerHTML = texto;
+                
+            }
+        })
+        .catch((error) => {
+                console.error(error.message);
+            });
+        </script>
+        <footer>
+            <ol>
+               <a href="https://plataformafasttrade.com.br/blog/tudo-sobre-bitcoin-conheca-a-historia-e-saiba-como-investir-na-moeda-digital-do-momento/" target="_blank">
+                O Bitcoin nasceu em 2008
+            </a>
+            </ol>
+            <ol>
+                
+                <a href="https://economia.ig.com.br/criptomoedas/2019-06-10/conheca-o-litecoin-uma-das-principais-criptomoedas-do-mercado.html#:~:text=O%20Litecoin%20foi%20criado%20no,como%20base%20para%20o%20LTC." target="_blank">
+                O Litcoin nasceu em 2011
+                </a>
+            </ol>
+            <ol>
+                
+                <a href="https://guiadobitcoin.com.br/primeira-altcoin-historia-do-bitcoin/#:~:text=A%20primeira%20altcoin%20do%20Criptomercado&text=Pelo%20contr%C3%A1rio%2C%20era%20uma%20criptomoeda,bem%20diferente%20daquela%20do%20BTC." target="_blank">
+                O Namecoin nasceu em 2011
+                </a>
+            </ol>
+            <ol>
+                 
+                <a href="https://terracoin.io/pt/" target="_blank">
+                    O terracoin nasceu em 2012
+                </a>
+            </ol>
+            <ol>
+                
+                <a href="https://pt.wikipedia.org/wiki/Peercoin" target="_blank">
+                    O Peercoin nasceu em 2012
+                </a>
+            </ol>
+            <ol>
+                 
+                <a href="https://en.bitcoinwiki.org/wiki/Novacoin" target="_blank">
+                    O Novacoin nasceu em 2013
+                </a>
+            </ol>
+            <ol>
+                
+                <a href="https://golden.com/wiki/Feathercoin-5K9W633" target="_blank">
+                    O Feathercoin nasceu em 2013
+                </a>
+            </ol>
+            <ol>
+                
+                <a href="https://en.bitcoinwiki.org/wiki/Freicoin" target="_blank">
+                    O Freicoin nasceu em 2013
+                </a>
+            </ol>
+            <ol>
+                
+                <a href="https://en.bitcoinwiki.org/wiki/Ixcoin" target="_blank">
+                    O Ixcoin nasceu em 2011
+                </a>
+            </ol>
+            <ol>
+               
+                <a href="https://en.bitcoinwiki.org/wiki/Digitalcoin" target="_blank">
+                    O Digitalcoin nasceu em 2013
+                </a>
+            </ol>
+            
+        </footer>
+    </body>
+</html>
